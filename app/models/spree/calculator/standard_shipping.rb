@@ -13,7 +13,7 @@ module Spree
     end
 
     def compute(object)
-      items_count = object.line_items.map(&:quantity).sum
+      items_count = object.line_items.map(&:amount).sum
 
       if items_count > self.preferred_free_shipping_amount then
         sum = self.preferred_set_discount_standard_shipping_value
