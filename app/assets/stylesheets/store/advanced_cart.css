@@ -1,0 +1,69 @@
+
+table#shipping_costs {
+  width: 40%;
+  margin-top: 2em;
+  th { text-align: left; }
+  th.price { width: 70px; }
+}
+
+div#estimate_shipping_costs {
+  margin: 40px 0;
+}
+
+#coupon {
+  padding-top: 5px;
+  /*border-top: 1px solid #D9D9DB;*/
+  height: 80px;
+}
+
+#apply_coupon {
+  width: 67%;
+  float: left;
+  display: inline;
+  /*border: 1px solid #D9D9DB;*/
+}
+
+#applied_coupon {
+  width: 33%;
+  float: left;
+  display: inline;
+}
+
+#applied_coupon td {
+    padding-left: 0px;
+}
+
+.ajax_loader { display: none; }
+
+
+#update_checkout {
+    width: 100%;
+}
+
+#update_checkout_left {
+  width: 67%;
+  float: left;
+  display: inline;
+}
+
+#update_checkout_right {
+  width: 33%;
+  float: left;
+  display: inline;
+}
+
+#subtotal-main {
+    width: 100%;
+    height: 40px;
+}
+
+#subtotal_right {
+  width: 33%;
+  float: right;
+  display: inline;
+}
+
+
+#subtotal_right td {
+    padding-left: 0px;
+}

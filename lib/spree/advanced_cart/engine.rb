@@ -21,6 +21,21 @@ module Spree
       end
 
       config.to_prepare &method(:activate).to_proc
+
+      #initializer 'spree.register.calculators', :after => "spree.register.calculators" do |app|
+      #      app.config.spree.calculators.add_class('product_customization_types')
+      #      app.config.spree.calculators.product_customization_types = [
+      #        Spree::Calculator::StandardShipping]
+      #end
+
+      initializer "spree.register.calculators", :after => "spree.register.calculators" do |app|
+        app.config.spree.calculators.shipping_methods.concat(
+          [Spree::Calculator::StandardShipping]
+        )
+      end
+
+
+
     end
   end
 end

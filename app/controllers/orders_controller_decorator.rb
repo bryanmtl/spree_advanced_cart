@@ -1,11 +1,23 @@
 Spree::OrdersController.class_eval do
   require 'zip-code-info'
-  
+
+  def remove_coupon
+     @order = current_order
+     @order.adjustments.reload.clear
+
+     respond_with(@order) do |format|
+        format.html { redirect_to cart_path }
+        format.js { @order.update! }
+     end
+  end
+
   def update
     @order = current_order
+    @order.adjustments.reload.clear
     if @order.update_attributes(params[:order])
       @order.line_items = @order.line_items.select {|li| li.quantity > 0 }
       fire_event('spree.order.contents_changed')
+      fire_event('spree.checkout.update')
       
       if @order.coupon_code.present?
         if Spree::Promotion.exists?(:code => @order.coupon_code)
