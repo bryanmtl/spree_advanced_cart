@@ -1,5 +1,5 @@
-<% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
-  <div id="coupon" data-hook="applying-coupons">
+<div id="coupon" data-hook="applying-coupons">
+    <% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
     <div id="apply_coupon">
         <h3><%= t(:apply_coupon) %></h3>
         <label><%= t(:coupon_code) %></label>
@@ -19,5 +19,5 @@
             </table>
         </div>
     <% end %>
-  </div>
-<% end %>
+    <% end %>
+</div>
