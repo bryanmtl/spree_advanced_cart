@@ -22,13 +22,20 @@ Spree::OrdersController.class_eval do
       if @order.coupon_code.present?
         if Spree::Promotion.exists?(:code => @order.coupon_code)
           fire_event('spree.checkout.coupon_code_added', :coupon_code => @order.coupon_code)
+
+          respond_with(@order) do |format|
+            format.html { redirect_to cart_path, :notice => "#{t('coupon_exists')}: #{@order.coupon_code}"}
+            format.js { @order.update!; render }
+          end
+        else
+          respond_with(@order) do |format|
+            format.html { redirect_to cart_path, :notice => t('coupon_does_not_exist').html_safe }
+            format.js { @order.update!; render }
+          end
         end
       end
       
-      respond_with(@order) do |format| 
-        format.html { redirect_to cart_path }
-        format.js { @order.update!; render }
-      end
+
     else
       respond_with(@order)
     end
