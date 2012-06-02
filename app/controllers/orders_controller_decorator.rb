@@ -11,6 +11,7 @@ Spree::OrdersController.class_eval do
      end
   end
 
+
   def update
     @order = current_order
     @order.adjustments.reload.clear
@@ -18,7 +19,7 @@ Spree::OrdersController.class_eval do
       @order.line_items = @order.line_items.select {|li| li.quantity > 0 }
       fire_event('spree.order.contents_changed')
       fire_event('spree.checkout.update')
-      
+
       if @order.coupon_code.present?
         if Spree::Promotion.exists?(:code => @order.coupon_code)
           fire_event('spree.checkout.coupon_code_added', :coupon_code => @order.coupon_code)
@@ -33,14 +34,18 @@ Spree::OrdersController.class_eval do
             format.js { @order.update!; render }
           end
         end
+      else
+          respond_with(@order) do |format|
+          format.html { redirect_to cart_path }
+          format.js { @order.update!; render }
+        end
       end
-      
 
     else
       respond_with(@order)
     end
   end
-  
+
   def estimate_shipping_cost
     @order = current_order(true)
     # default attributes for stub address
