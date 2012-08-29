@@ -9,14 +9,12 @@ div#estimate_shipping_costs {
 }
 
 #apply_coupon {
-  width: 67%;
   float: left;
   display: inline;
   /*border: 1px solid #D9D9DB;*/
 }
 
 #applied_coupon {
-  width: 33%;
   float: left;
   display: inline;
 }

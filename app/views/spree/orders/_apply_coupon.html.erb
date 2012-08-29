@@ -1,9 +1,7 @@
 <div id="coupon" data-hook="applying-coupons">
     <% if Spree::AdvancedCart::Config[:enable_coupon_applying] %>
     <div id="apply_coupon">
-        <h3><%= t(:apply_coupon) %></h3>
-        <label><%= t(:coupon_code) %></label>
-        <%= order_form.text_field :coupon_code, :size => 30, :placeholder => t('enter_coupon_message')  %>
+        <%= order_form.text_field :coupon_code, :placeholder => t('enter_coupon_message')  %>
         <%= order_form.submit t("apply") %>
     </div>
     <% if @order.adjustments.eligible.count > 0 %>

@@ -2,7 +2,7 @@ en:
   enter_zipcode: "Enter zipcode"
   apply_coupon: "Apply coupon"
   applied_coupon: "Applied coupon"
-  enter_coupon_message: "Enter coupon last"
+  enter_coupon_message: "enter coupon code"
   coupon_exists: "You have successfully added coupon"
   coupon_does_not_exist: "We're sorry that coupon does not exist, please sign up to our <a href='news_letter'>Newsletter</a> for future coupons"
   calc_estimated_shipping_cost: "Calc estimated shipping cost"
